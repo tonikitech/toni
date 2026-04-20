@@ -21,7 +21,8 @@ async function updateNews() {
     const html = generateHTML(topNews);
     
     // Save to public directory
-    const outputPath = '/data/.openclaw/workspace/projects/ai-news-blog/public/index.html';
+    const path = require('path');
+    const outputPath = path.join(__dirname, 'public', 'index.html');
     saveHTML(html, outputPath);
 
     console.log('✅ News updated successfully!');
