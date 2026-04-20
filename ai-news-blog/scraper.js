@@ -10,11 +10,11 @@ const SOURCES = [
 
 // Stock images for AI news
 const FALLBACK_IMAGES = [
-  'https://images.unsplash.com/photo-1677442d019cecf8d6210aa91007f86fb?w=800&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=800&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1639762681033-6461ffad8d80?w=800&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1655635949004-78a42165580d?w=800&h=400&fit=crop',
+  'https://picsum.photos/800/400?random?w=800&h=400&fit=crop',
+  'https://picsum.photos/800/400?random?w=800&h=400&fit=crop',
+  'https://picsum.photos/800/400?random?w=800&h=400&fit=crop',
+  'https://picsum.photos/800/400?random?w=800&h=400&fit=crop',
+  'https://picsum.photos/800/400?random?w=800&h=400&fit=crop',
 ];
 
 let imageIndex = 0;
