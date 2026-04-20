@@ -15,7 +15,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '20'
     
     - name: Install dependencies
       working-directory: ./ai-news-blog
@@ -30,6 +30,7 @@ jobs:
         mkdir -p docs
         rm -rf docs/*
         cp ai-news-blog/public/index.html docs/
+        cp .nojekyll docs/
     
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
