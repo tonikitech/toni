@@ -8,7 +8,7 @@ const SOURCES = [
   { name: 'HackerNews', url: 'https://hnrss.org/frontpage', type: 'rss' },
 ];
 
-// Image keywords mapping - picsum IDs for different AI topics
+// Image keywords mapping
 const TOPIC_IMAGES = {
   'neural': 1,
   'vision': 2,
@@ -70,17 +70,16 @@ function getImageByTopic(title) {
   for (const keyword in TOPIC_IMAGES) {
     if (titleLower.includes(keyword)) {
       const imageId = TOPIC_IMAGES[keyword];
-      return `https://picsum.photos/800/400?random=${imageId}`;
+      return `https://picsum.photos/id/${imageId}/800/400`;
     }
   }
   
-  // Fallback to random
-  const randomId = Math.floor(Math.random() * 100) + 20;
-  return `https://picsum.photos/800/400?random=${randomId}`;
+  // Fallback to random ID
+  const randomId = Math.floor(Math.random() * 80) + 10;
+  return `https://picsum.photos/id/${randomId}/800/400`;
 }
 
 function extractImage(item) {
-  // Try multiple image extraction methods
   if (item['media:content']?.[0]?.$ && item['media:content'][0].$.url) {
     return item['media:content'][0].$.url;
   }
