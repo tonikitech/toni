@@ -10,7 +10,7 @@ const SOURCES = [
 
 // Stock images for AI news
 const FALLBACK_IMAGES = [
-  'https://images.unsplash.com/photo-1677442d019cecf8d6210aa91007f86fb_?w=800&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1677442d019cecf8d6210aa91007f86fb?w=800&h=400&fit=crop',
   'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop',
   'https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=800&h=400&fit=crop',
   'https://images.unsplash.com/photo-1639762681033-6461ffad8d80?w=800&h=400&fit=crop',
