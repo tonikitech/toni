@@ -8,6 +8,17 @@ const SOURCES = [
   { name: 'HackerNews', url: 'https://hnrss.org/frontpage', type: 'rss' },
 ];
 
+// Stock images for AI news
+const FALLBACK_IMAGES = [
+  'https://images.unsplash.com/photo-1677442d019cecf8d6210aa91007f86fb_?w=800&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=800&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1639762681033-6461ffad8d80?w=800&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1655635949004-78a42165580d?w=800&h=400&fit=crop',
+];
+
+let imageIndex = 0;
+
 async function fetchUrl(url) {
   return new Promise((resolve, reject) => {
     const protocol = url.startsWith('https') ? https : http;
@@ -36,12 +47,18 @@ async function scrapeSource(source) {
       link: item.link?.[0] || '',
       description: item.description?.[0]?.substring(0, 150) || '',
       pubDate: item.pubDate?.[0] || new Date().toISOString(),
-      image: extractImage(item) || `https://via.placeholder.com/800x400?text=${source.name}`,
+      image: extractImage(item) || getRandomFallbackImage(),
     }));
   } catch (err) {
     console.error(`Error scraping ${source.name}:`, err.message);
     return [];
   }
+}
+
+function getRandomFallbackImage() {
+  const img = FALLBACK_IMAGES[imageIndex % FALLBACK_IMAGES.length];
+  imageIndex++;
+  return img;
 }
 
 function extractImage(item) {
