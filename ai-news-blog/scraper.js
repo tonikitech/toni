@@ -45,10 +45,36 @@ async function scrapeSource(source) {
 }
 
 function extractImage(item) {
-  // Try content:encoded for image tags
+  // Try multiple image extraction methods
+  // 1. media:content (common in RSS)
+  if (item['media:content']?.[0]?.$ && item['media:content'][0].$.url) {
+    return item['media:content'][0].$.url;
+  }
+  
+  // 2. media:thumbnail
+  if (item['media:thumbnail']?.[0]?.$ && item['media:thumbnail'][0].$.url) {
+    return item['media:thumbnail'][0].$.url;
+  }
+  
+  // 3. image:url
+  if (item['image:url']?.[0]) {
+    return item['image:url'][0];
+  }
+  
+  // 4. img tag in content:encoded or description
   const content = item['content:encoded']?.[0] || item.description?.[0] || '';
-  const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-  return imgMatch?.[1];
+  const imgMatch = content.match(/<img[^>]+src="([^">]+)"/i);
+  if (imgMatch?.[1]) {
+    return imgMatch[1];
+  }
+  
+  // 5. og:image or twitter:image
+  const ogMatch = content.match(/og:image.*content=["']([^"']+)/i);
+  if (ogMatch?.[1]) {
+    return ogMatch[1];
+  }
+  
+  return null;
 }
 
 async function scrapeAll() {
