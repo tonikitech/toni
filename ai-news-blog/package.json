@@ -1,0 +1,18 @@
+{
+  "name": "ai-news-blog",
+  "version": "1.0.0",
+  "description": "Daily AI news aggregator for toni-ki.tech",
+  "main": "daemon.js",
+  "scripts": {
+    "start": "node index.js",
+    "update": "node index.js",
+    "daemon": "node daemon.js"
+  },
+  "keywords": ["ai", "news", "blog"],
+  "author": "Toni",
+  "license": "MIT",
+  "dependencies": {
+    "xml2js": "^0.6.2",
+    "node-cron": "^3.0.2"
+  }
+}
