@@ -30,7 +30,7 @@ jobs:
         mkdir -p docs
         rm -rf docs/*
         cp ai-news-blog/public/index.html docs/
-        cp .nojekyll docs/
+        touch docs/.nojekyll
     
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
